@@ -17,7 +17,7 @@ public class HomeController {
 	public String Home( ) {
 		
 		System.out.println("home page requested.");
-		return "home.jsp";
+		return "home";
 	}
 	
 	@RequestMapping(path="calc.do")
@@ -26,7 +26,7 @@ public class HomeController {
 		
 		int res = n1+n2;
 		sess.setAttribute("result", res);
-		return "result.jsp";
+		return "result";
 	}
 	
 	/*
