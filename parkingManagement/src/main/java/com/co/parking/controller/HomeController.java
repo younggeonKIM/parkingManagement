@@ -39,6 +39,11 @@ public class HomeController {
 		return "result";
 	}
 	
+	@ModelAttribute
+	public void alienName(Model m) {
+		
+		m.addAttribute("ALIEN", "영건");
+	}
 	
 	
 	/* Model 사용
