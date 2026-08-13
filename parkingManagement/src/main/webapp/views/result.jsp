@@ -12,7 +12,7 @@
 <body>
 안녕하세요 주차장 관리 시스템에 오신 것을 환영합니다.
 
-	정답은 ${ sessionScope.result } 입니다.
+	정답은 ${ alien } 입니다.
 	
 	
 </body>

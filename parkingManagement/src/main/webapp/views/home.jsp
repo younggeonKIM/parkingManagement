@@ -11,9 +11,9 @@
 <body>
 안녕하세요 주차장 관리 시스템에 오신 것을 환영합니다.
 
-	<form action="calc.do" method="post">
-		첫 번쨰 숫자를 입력하세요 : <input type="text" name="num1"><br>
-		두 번쨰 숫자를 입력하세요 : <input type="text" name="num2"><br>
+	<form action="regAlien.do" method="post">
+		ID를 입력하세요 : <input type="text" name="aid"><br>
+		이름을 입력하세요 : <input type="text" name="aname"><br>
 		<input type="submit">
 	</form>
 	
