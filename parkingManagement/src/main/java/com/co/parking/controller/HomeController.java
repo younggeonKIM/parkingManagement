@@ -1,14 +1,7 @@
 package com.co.parking.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.co.parking.model.Alien;
-
 
 @Controller
 public class HomeController {
@@ -23,27 +16,33 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(path="calc.do")
-	public String add(@RequestParam("num1") int n1,@RequestParam("num2") int n2, ModelMap m) {
-			
-		int res = n1+n2;
-		m.addAttribute("result", res);
-		return "result";
+	@RequestMapping("/getAllPark")
+	public String getAllPark() {
+		
+		
+		return "";
 	}
 	
-	@RequestMapping("regAlien.do")
-	public String regAlien(@ModelAttribute("alien") Alien a) {
-		
-		
-		
-		return "result";
-	}
 	
-	@ModelAttribute
-	public void alienName(Model m) {
-		
-		m.addAttribute("ALIEN", "영건");
-	}
+	
+	
+	/*
+	 * @RequestMapping(path="calc.do") public String add(@RequestParam("num1") int
+	 * n1,@RequestParam("num2") int n2, ModelMap m) {
+	 * 
+	 * int res = n1+n2; m.addAttribute("result", res); return "result"; }
+	 * 
+	 * @RequestMapping("regAlien.do") public String
+	 * regAlien(@ModelAttribute("alien") Alien a) {
+	 * 
+	 * 
+	 * 
+	 * return "result"; }
+	 * 
+	 * @ModelAttribute public void alienName(Model m) {
+	 * 
+	 * m.addAttribute("ALIEN", "영건"); }
+	 */
 	
 	
 	/* Model 사용
