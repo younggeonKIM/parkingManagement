@@ -1,0 +1,34 @@
+package com.co.parking.model;
+
+public class Park {
+
+	private int parkFloor;
+	private String parkNum;
+	private boolean parkFlag;
+	public int getParkFloor() {
+		return parkFloor;
+	}
+	public void setParkFloor(int parkFloor) {
+		this.parkFloor = parkFloor;
+	}
+	public String getParkNum() {
+		return parkNum;
+	}
+	public void setParkNum(String parkNum) {
+		this.parkNum = parkNum;
+	}
+	public boolean isParkFlag() {
+		return parkFlag;
+	}
+	public void setParkFlag(boolean parkFlag) {
+		this.parkFlag = parkFlag;
+	}
+	public Park(int parkFloor, String parkNum, boolean parkFlag) {
+		super();
+		this.parkFloor = parkFloor;
+		this.parkNum = parkNum;
+		this.parkFlag = parkFlag;
+	}
+	
+	
+}
