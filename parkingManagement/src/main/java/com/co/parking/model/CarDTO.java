@@ -1,7 +1,7 @@
 package com.co.parking.model;
 
 
-public class Car {
+public class CarDTO {
 	
 	private String carNum;
 	private String carInTime;
@@ -32,7 +32,7 @@ public class Car {
 		this.carSort = carSort;
 	}
 	
-	public Car(String carNum, String carInTime, String carOutTime, String carSort) {
+	public CarDTO(String carNum, String carInTime, String carOutTime, String carSort) {
 		super();
 		this.carNum = carNum;
 		this.carInTime = carInTime;

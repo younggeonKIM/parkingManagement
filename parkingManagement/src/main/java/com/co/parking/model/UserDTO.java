@@ -1,6 +1,6 @@
 package com.co.parking.model;
 
-public class User {
+public class UserDTO {
 
 	private String userID;
 	private String userPWD;
@@ -31,7 +31,7 @@ public class User {
 		this.userParkFlag = userParkFlag;
 	}
 	
-	public User(String userID, String userPWD, String userName, boolean userParkFlag) {
+	public UserDTO(String userID, String userPWD, String userName, boolean userParkFlag) {
 		super();
 		this.userID = userID;
 		this.userPWD = userPWD;

@@ -1,6 +1,6 @@
 package com.co.parking.model;
 
-public class Park {
+public class ParkDTO {
 
 	private int parkFloor;
 	private String parkNum;
@@ -23,7 +23,7 @@ public class Park {
 	public void setParkFlag(boolean parkFlag) {
 		this.parkFlag = parkFlag;
 	}
-	public Park(int parkFloor, String parkNum, boolean parkFlag) {
+	public ParkDTO(int parkFloor, String parkNum, boolean parkFlag) {
 		super();
 		this.parkFloor = parkFloor;
 		this.parkNum = parkNum;
