@@ -1,5 +1,6 @@
 package com.co.parking.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
@@ -12,6 +13,7 @@ public class ParkEntity {
 	private int parkFloor;
 	
 	@Id
+	@Column(length=3)
 	private String parkNum;
 	
 	private boolean parkFlag;
