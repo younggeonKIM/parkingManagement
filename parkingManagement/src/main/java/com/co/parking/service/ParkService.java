@@ -18,11 +18,16 @@ public class ParkService {
 	
 	public List<ParkDTO> getAllParkList(){
 		
-		List<ParkEntity> li = new ArrayList();
-		List<ParkDTO> list = new ArrayList();
+		List<ParkEntity> li = new ArrayList<ParkEntity>();
+		List<ParkDTO> list = new ArrayList<ParkDTO>();
 		li = prepo.findAll();
-		for(li)
+		for(ParkEntity i : li) {
+			
+			ParkDTO j = new ParkDTO(i.getParkFloor(), i.getParkNum(), i.isParkFlag());
+			list.add(j);
+		}
 		
+		return list;
 	}
 	
 }

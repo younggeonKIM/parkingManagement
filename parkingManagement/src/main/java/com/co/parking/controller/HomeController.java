@@ -1,12 +1,17 @@
 package com.co.parking.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.co.parking.service.ParkService;
 
 @Controller
 public class HomeController {
 
-	
+	@Autowired
+	ParkService ps;
 	
 	
 	@RequestMapping("/")
@@ -17,8 +22,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/getAllPark")
-	public String getAllPark() {
+	public String getAllPark(Model m) {
 		
+		
+		m.addAttribute("parkList", ps.getAllParkList());
 		
 		return "";
 	}

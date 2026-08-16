@@ -11,10 +11,10 @@
 <body>
 안녕하세요 주차장 관리 시스템에 오신 것을 환영합니다.
 <ul>
-	<li><a href="getAllPark">주차 공간 찾기</a></li>
-	<li><a href="doReserv">예약하기</a></li>
-	<li><a href="getMyParkNum">내차 주차장 확인</a></li>
-	<li><a href="calcParkFee">요금 정산</a></li>
+	<li><a href="/getAllPark">주차 공간 찾기</a></li>
+	<li><a href="/doReserv">예약하기</a></li>
+	<li><a href="/getMyParkNum">내차 주차장 확인</a></li>
+	<li><a href="/calcParkFee">요금 정산</a></li>
 </ul>
 	
 	
