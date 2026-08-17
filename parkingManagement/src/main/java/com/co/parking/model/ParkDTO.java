@@ -29,6 +29,10 @@ public class ParkDTO {
 		this.parkNum = parkNum;
 		this.parkFlag = parkFlag;
 	}
+	@Override
+	public String toString() {
+		return "ParkDTO [parkFloor=" + parkFloor + ", parkNum=" + parkNum + ", parkFlag=" + parkFlag + "]";
+	}
 	
 	
 }

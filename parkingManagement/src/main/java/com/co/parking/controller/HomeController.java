@@ -26,9 +26,9 @@ public class HomeController {
 		
 		System.out.println("parkService 실행 결과 parkList : "+ps.getAllParkList());
 		
-		m.addAttribute("parkList", ps.getAllParkList());
+		m.addAttribute("parkList",  ps.getAllParkList());
 		
-		return "";
+		return "getAllPark";
 	}
 	
 	

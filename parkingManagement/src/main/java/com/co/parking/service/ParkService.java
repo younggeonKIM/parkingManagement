@@ -21,6 +21,9 @@ public class ParkService {
 		List<ParkEntity> li = new ArrayList<ParkEntity>();
 		List<ParkDTO> list = new ArrayList<ParkDTO>();
 		li = prepo.findAll();
+		
+		System.out.println("ParkRepository findAll method 실행 결과 : " + li);
+		
 		for(ParkEntity i : li) {
 			
 			ParkDTO j = new ParkDTO(i.getParkFloor(), i.getParkNum(), i.isParkFlag());
