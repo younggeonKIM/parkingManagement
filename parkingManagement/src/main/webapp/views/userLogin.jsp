@@ -8,14 +8,19 @@
 </head>
 <body>
 <c:choose>
-<c:when test="${ session==null }">
+<c:when test="${ sessionscope eq null }">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/userLogin">로그인하기</a>
 </c:when>
 <c:otherwise>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p>어서오세요. ${ session.userId } 님 </p> &nbsp;&nbsp; <a href="/userLogin">로그아웃하기</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p>어서오세요. ${ sessionScope.username } 님 </p> &nbsp;&nbsp; <a href="/userLogin">로그아웃하기</a>
 </c:otherwise>
 </c:choose>
 
-${ parkList } 입니다.
+<form action="userLogin.do">
+	아이디 : <input type="text" name="userID">
+	비밀번호 : <input type="password" name="userPWD">
+</form>
+
+
 </body>
 </html>

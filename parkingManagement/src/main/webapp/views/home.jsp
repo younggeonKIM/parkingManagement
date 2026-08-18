@@ -9,6 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:choose>
+<c:when test="${ session==null }">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/userLogin">로그인하기</a>
+</c:when>
+<c:otherwise>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p>어서오세요. ${ session.userId } 님 </p> &nbsp;&nbsp; <a href="/userLogin">로그아웃하기</a>
+</c:otherwise>
+</c:choose>
+
+<br>
+<br>
+<br>
 안녕하세요 주차장 관리 시스템에 오신 것을 환영합니다.
 <ul>
 	<li><a href="/getAllPark">주차 공간 찾기</a></li>

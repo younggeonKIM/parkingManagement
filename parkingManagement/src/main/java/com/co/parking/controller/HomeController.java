@@ -24,8 +24,6 @@ public class HomeController {
 	@RequestMapping("/getAllPark")
 	public String getAllPark(Model m) {
 		
-		System.out.println("parkService 실행 결과 parkList : "+ps.getAllParkList());
-		
 		m.addAttribute("parkList",  ps.getAllParkList());
 		
 		return "getAllPark";
