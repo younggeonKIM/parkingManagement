@@ -28,9 +28,11 @@ public class UserService {
 		return userName;
 	}
 
-	public String userLoginResult(UserDTO udto) {
+	public String userLoginResult(String uid, String upwd) {
 		
-		Optional<UserEntity> s =ur.findById(udto.getUserID());
+		Optional<UserEntity> s =ur.findById(uid);
+		
+		System.out.println("userService의 userLoginResult 메서드에 전달된 ID는 : "+uid);
 		if(s.isEmpty()) {
 			
 
@@ -39,7 +41,7 @@ public class UserService {
 		} 
 		else {
 			
-			if(udto.getUserPWD().equals(s.get().getUserPWD()) ) {
+			if(upwd.equals(s.get().getUserPWD()) ) {
 				
 				this.loginCheckToken = true;
 				this.userName = s.get().getUserName();
@@ -51,5 +53,6 @@ public class UserService {
 				return "check your PWD is correct";
 			}
 		}
+		
 	}
 }
