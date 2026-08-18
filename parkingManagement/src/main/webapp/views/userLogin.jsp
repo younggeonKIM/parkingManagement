@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,18 +9,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:choose>
-<c:when test="${ sessionscope eq null }">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/userLogin">로그인하기</a>
-</c:when>
-<c:otherwise>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p>어서오세요. ${ sessionScope.username } 님 </p> &nbsp;&nbsp; <a href="/userLogin">로그아웃하기</a>
-</c:otherwise>
-</c:choose>
 
 <form action="userLogin.do">
 	아이디 : <input type="text" name="userID">
 	비밀번호 : <input type="password" name="userPWD">
+	로그인하기 <input type="submit">
+	
 </form>
 
 
