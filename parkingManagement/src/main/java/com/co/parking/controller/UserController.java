@@ -2,18 +2,18 @@ package com.co.parking.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.co.parking.model.UserDTO;
+
 import com.co.parking.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class UserLoginController {
+public class UserController {
 
 	@Autowired
 	UserService us;
@@ -35,11 +35,20 @@ public class UserLoginController {
 		if(us.isLoginCheckToken()) {
 			
 			sess.setAttribute("username", us.getUserName());
+			sess.setAttribute("userID", uid);
 			return "userLoginResult";
 		} else {
 			
 			sess=null;
 			return "userLoginResult";
 		}
+	}
+	
+	@RequestMapping("/userLogout/do")
+	public String doUserLogout(HttpSession ss) {
+		
+		ss.removeAttribute("username");
+		return "userLogoutResult";
+		
 	}
 }

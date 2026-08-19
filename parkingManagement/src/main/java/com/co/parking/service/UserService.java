@@ -32,7 +32,6 @@ public class UserService {
 		
 		Optional<UserEntity> s =ur.findById(uid);
 		
-		System.out.println("userService의 userLoginResult 메서드에 전달된 ID는 : "+uid);
 		if(s.isEmpty()) {
 			
 
