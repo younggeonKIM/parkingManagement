@@ -19,6 +19,6 @@
 <br/>
 <a href="/">홈으로</a>
 <br/>
-<a href="userLogin">로그인하러 가기</a>
+<a href="/userLogin">로그인하러 가기</a>
 </body>
 </html>

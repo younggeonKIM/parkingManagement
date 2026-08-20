@@ -19,13 +19,13 @@
 	<c:otherwise>
 	
 	
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/userLogin">로그인하기</a>
+	
 	<br/>
 	로그인에 실패했습니다.
 	<br/>
 	<a href="/">홈으로</a>
 	<br/>
-	<a href="userLogin">다시 로그인하러 가기</a>
+	<a href="/userLogin">다시 로그인하러 가기</a>
 	</c:otherwise>
 </c:choose>
 

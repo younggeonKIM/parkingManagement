@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form action="userLogin/do" method="POST">
+<form action="/userLogin/do" method="POST">
 	아이디 : <input type="text" name="userID">
 	비밀번호 : <input type="password" name="userPWD">
 	로그인하기 <input type="submit">

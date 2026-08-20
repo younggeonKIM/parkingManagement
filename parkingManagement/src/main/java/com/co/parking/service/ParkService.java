@@ -33,4 +33,15 @@ public class ParkService {
 		return list;
 	}
 	
+	public void createPark(int pf, String pn) {
+		
+		ParkEntity pe = new ParkEntity();
+		pe.setParkFloor(pf);
+		pe.setParkNum(pn);
+		
+		
+		pe.setParkFlag(false);
+		prepo.save(pe);
+	}
+	
 }

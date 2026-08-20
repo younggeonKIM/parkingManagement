@@ -121,7 +121,8 @@
     </tr>
     
 </table>
-
+<br/>
+<a href="/">홈으로</a>
 
 <c:if test="${ sessionScope.userID eq 'admin' }">
 	<p id="parkEntry">
