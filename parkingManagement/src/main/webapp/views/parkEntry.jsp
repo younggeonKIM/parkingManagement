@@ -23,7 +23,7 @@
 <script type="text/javascript">
 function checkForm(f){
 	
-	if(f.parkFloor.value==""){
+	if(f.parkFloor.value.trim() === ""){
 		
 		alert('주차 층계를 입력하세요.');
 		return false;
@@ -38,7 +38,7 @@ function checkForm(f){
 		alert('주차 층계는 6이하의 숫자로만 입력해주세요.');
 		return false;
 	}
-	if(f.parkNum.value.trim()===""){
+	if(f.parkNum.value.trim() === ""){
 		
 		alert('주차장 번호를 입력하세요.');
 		return false;
