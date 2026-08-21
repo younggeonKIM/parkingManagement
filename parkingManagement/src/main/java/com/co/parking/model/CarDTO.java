@@ -1,11 +1,12 @@
 package com.co.parking.model;
 
+import java.sql.Timestamp;
 
 public class CarDTO {
 	
 	private String carNum;
-	private String carInTime;
-	private String carOutTime;
+	private Timestamp carInTime;
+	private Timestamp carOutTime;
 	private String carSort;
 	public String getCarNum() {
 		return carNum;
@@ -13,16 +14,16 @@ public class CarDTO {
 	public void setCarNum(String carNum) {
 		this.carNum = carNum;
 	}
-	public String getCarInTime() {
+	public Timestamp getCarInTime() {
 		return carInTime;
 	}
-	public void setCarInTime(String carInTime) {
+	public void setCarInTime(Timestamp carInTime) {
 		this.carInTime = carInTime;
 	}
-	public String getCarOutTime() {
+	public Timestamp getCarOutTime() {
 		return carOutTime;
 	}
-	public void setCarOutTime(String carOutTime) {
+	public void setCarOutTime(Timestamp carOutTime) {
 		this.carOutTime = carOutTime;
 	}
 	public String getCarSort() {
@@ -32,7 +33,7 @@ public class CarDTO {
 		this.carSort = carSort;
 	}
 	
-	public CarDTO(String carNum, String carInTime, String carOutTime, String carSort) {
+	public CarDTO(String carNum, Timestamp carInTime, Timestamp carOutTime, String carSort) {
 		super();
 		this.carNum = carNum;
 		this.carInTime = carInTime;
