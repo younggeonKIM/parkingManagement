@@ -43,6 +43,14 @@ public class ParkId implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public void setParkFloor(int parkFloor) {
+		this.parkFloor = parkFloor;
+	}
+
+	public void setParkNum(String parkNum) {
+		this.parkNum = parkNum;
+	}
 	
 	
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.co.parking.entity.ParkEntity;
+import com.co.parking.entity.ParkId;
 import com.co.parking.model.ParkDTO;
 import com.co.parking.repository.ParkRepository;
 
@@ -44,4 +45,12 @@ public class ParkService {
 		prepo.save(pe);
 	}
 	
+	public ParkDTO getParkById(ParkId pi) {
+		
+		
+		ParkEntity pe = new ParkEntity();
+		pe=prepo.findById(pi).get();
+		ParkDTO pdto = new ParkDTO(pe.getParkFloor(), pe.getParkNum(), pe.isParkFlag());
+		return pdto;
+	}
 }

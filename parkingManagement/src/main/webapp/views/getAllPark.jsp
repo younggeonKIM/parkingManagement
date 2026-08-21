@@ -65,7 +65,7 @@
         <c:forEach items="${ parkList }" var="park">
             <!-- EL 표현식 내부{ } 안에서 비교 연산을 해야 합니다 -->
             <c:if test="${ park.parkFloor == 1 }">
-                <td>${ park.parkNum }</td>
+                <td><a href="/park/id/1/${ park.parkNum }">${ park.parkNum }</a></td>
             </c:if>
         </c:forEach>
     </tr>
@@ -75,7 +75,7 @@
         <th>2층</th>
         <c:forEach items="${ parkList }" var="park">
             <c:if test="${ park.parkFloor == 2 }">
-                <td>${ park.parkNum }</td>
+                <td><a href="/park/id/2/${ park.parkNum }">${ park.parkNum }</a></td>
             </c:if>
         </c:forEach>
     </tr>
@@ -85,7 +85,7 @@
         <th>3층</th>
         <c:forEach items="${ parkList }" var="park">
             <c:if test="${ park.parkFloor == 3 }">
-                <td>${ park.parkNum }</td>
+                <td><a href="/park/id/3/${ park.parkNum }">${ park.parkNum }</a></td>
             </c:if>
         </c:forEach>
     </tr>
@@ -95,7 +95,7 @@
         <th>4층</th>
         <c:forEach items="${ parkList }" var="park">
             <c:if test="${ park.parkFloor == 4 }">
-                <td>${ park.parkNum }</td>
+                <td><a href="/park/id/4/${ park.parkNum }">${ park.parkNum }</a></td>
             </c:if>
         </c:forEach>
     </tr>
@@ -105,7 +105,7 @@
         <th>5층</th>
         <c:forEach items="${ parkList }" var="park">
             <c:if test="${ park.parkFloor == 5 }">
-                <td>${ park.parkNum }</td>
+                <td><a href="/park/id/5/${ park.parkNum }">${ park.parkNum }</a></td>
             </c:if>
         </c:forEach>
     </tr>
@@ -115,7 +115,7 @@
         <th>6층</th>
         <c:forEach items="${ parkList }" var="park">
             <c:if test="${ park.parkFloor == 6 }">
-                <td>${ park.parkNum }</td>
+                <td><a href="/park/id/6/${ park.parkNum }">${ park.parkNum }</a></td>
             </c:if>
         </c:forEach>
     </tr>
