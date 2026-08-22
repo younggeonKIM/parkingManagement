@@ -2,12 +2,13 @@ package com.co.parking.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.co.parking.model.UserDTO;
 import com.co.parking.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -51,4 +52,23 @@ public class UserController {
 		return "userLogoutResult";
 		
 	}
+	
+	@RequestMapping("/userEntry")
+	public String userEntry() {
+		
+		
+		return "userEntry";
+	}
+	
+	@RequestMapping(path="/userEntry/do", method=RequestMethod.POST)
+	public String createUser(@ModelAttribute UserDTO udto, Model m) {
+		
+		System.out.println(udto);
+		System.out.println(udto.isUserParkFlag());
+		us.createUser(udto);
+		m.addAttribute("user", udto);
+		return "userEntryResult";
+	}
+	
+	
 }

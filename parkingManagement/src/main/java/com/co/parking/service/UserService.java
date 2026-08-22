@@ -54,4 +54,18 @@ public class UserService {
 		}
 		
 	}
+	
+	
+	public void createUser(UserDTO udto) {
+		
+		UserEntity ue = new UserEntity();
+		ue.setUserID(udto.getUserID());
+		ue.setUserPWD(udto.getUserPWD());
+		ue.setUserName(udto.getUserName());
+		ue.setUserParkFlag(udto.isUserParkFlag());
+		ue.setUserCarNum(udto.getUserCarNum());
+		
+		ur.save(ue);
+		
+	}
 }

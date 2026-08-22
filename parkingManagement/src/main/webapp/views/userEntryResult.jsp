@@ -31,7 +31,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/userEntry">회원가입</a>&nbsp;&nbsp;<a href="/userLogin">로그인하기</a>
+<a href="/userLogin">로그인하기</a>
 </c:when>
 <c:otherwise>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -68,10 +68,11 @@
 <br/>
 <br/>
 
+회원가입 완료됐습니다.
+<br>
+ ${ user.userID } 의 ID로 로그인 해주세요.
 
-주차장 번호가 등록됐습니다. 
-${ parkFloor } 층에 ${ parkNum } 번호 등록됨. 
 <br/>
-<a href="/">홈으로</a>
+<a href="/userLogin">로그인하러가기</a>
 </body>
 </html>
