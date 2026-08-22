@@ -32,7 +32,7 @@ public class UserService {
 		
 		Optional<UserEntity> s =ur.findById(uid);
 		
-		if(s.isEmpty()) {
+		if(! s.isPresent()) {
 			
 
 			this.loginCheckToken = false;
