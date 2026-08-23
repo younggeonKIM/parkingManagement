@@ -53,4 +53,13 @@ public class ParkService {
 		ParkDTO pdto = new ParkDTO(pe.getParkFloor(), pe.getParkNum(), pe.isParkFlag());
 		return pdto;
 	}
+	
+	public void doReservePark(ParkId pi) {
+		
+		ParkEntity pe = new ParkEntity();
+		pe = prepo.findById(pi).get();
+		pe.setParkFlag(false);
+		prepo.save(pe);
+		
+	}
 }

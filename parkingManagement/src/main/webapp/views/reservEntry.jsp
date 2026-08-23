@@ -12,7 +12,8 @@ const parkList=[
 	<c:forEach items="${ list }" var="li" varStatus="status">
 		{
 			parkfloor : "${ li.parkFloor }",
-			parknum : "${ li.parkNum }"
+			parknum : "${ li.parkNum }",
+			parkflag : ${ li.parkFlag }
 			
 		}
 		<c:if test="${ !status.last }">,</c:if>
@@ -109,6 +110,11 @@ function toggleSelect(){
 			
 			for(li of parkList){
 				if(parseInt(li.parkfloor) === 1){
+				
+					if(li.parkflag === false){
+						
+						continue;
+					}
 					const option = document.createElement("option");
 					option.value = li.parknum;
 					option.textContent = li.parknum;
@@ -120,6 +126,10 @@ function toggleSelect(){
 		case "2층": 
 			for(li of parkList){
 				if(parseInt(li.parkfloor) === 2){
+					if(li.parkflag === false){
+						
+						continue;
+					}
 					const option = document.createElement("option");
 					option.value = li.parknum;
 					option.textContent = li.parknum;
@@ -130,6 +140,10 @@ function toggleSelect(){
 		case "3층": 
 			for(li of parkList){
 				if(parseInt(li.parkfloor) === 3){
+					if(li.parkflag === false){
+						
+						continue;
+					}
 					const option = document.createElement("option");
 					option.value = li.parknum;
 					option.textContent = li.parknum;
@@ -140,6 +154,10 @@ function toggleSelect(){
 		case "4층": 
 			for(li of parkList){
 				if(parseInt(li.parkfloor) === 4){
+					if(li.parkflag === false){
+						
+						continue;
+					}
 					const option = document.createElement("option");
 					option.value = li.parknum;
 					option.textContent = li.parknum;
@@ -150,6 +168,10 @@ function toggleSelect(){
 		case "5층": 
 			for(li of parkList){
 				if(parseInt(li.parkfloor) === 5){
+					if(li.parkflag === false){
+						
+						continue;
+					}
 					const option = document.createElement("option");
 					option.value = li.parknum;
 					option.textContent = li.parknum;
@@ -160,6 +182,10 @@ function toggleSelect(){
 		case "6층": 
 			for(li of parkList){
 				if(parseInt(li.parkfloor) === 6){
+					if(li.parkflag === false){
+						
+						continue;
+					}
 					const option = document.createElement("option");
 					option.value = li.parknum;
 					option.textContent = li.parknum;

@@ -5,10 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.co.parking.entity.ParkId;
 import com.co.parking.model.ParkDTO;
 import com.co.parking.service.ParkService;
+import com.co.parking.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -17,7 +22,8 @@ public class ParkController {
 	@Autowired
 	ParkService ps;
 	
-	
+	@Autowired
+	UserService us;
 	
 	@RequestMapping("/parkEntry")
 	public String goParkEntry() {
@@ -44,5 +50,19 @@ public class ParkController {
 		pdto=ps.getParkById(pi);
 		m.addAttribute("park", pdto);
 		return "getParkById";
+	}
+	
+	@RequestMapping(value="/reserv/do", method=RequestMethod.POST)
+	public String doReserve(@RequestParam("parkFloor") int pf, @RequestParam("parkNum") String pn, HttpSession ss, Model m) {
+		
+		ParkId pi = new ParkId();
+		pi.setParkFloor(pf);
+		pi.setParkNum(pn);
+		ps.doReservePark(pi);
+		us.doReserveUser(ss.getAttribute("userID").toString());
+		m.addAttribute("parkFloor", pf);
+		m.addAttribute("parkNum", pn);
+		
+		return "reservResult";
 	}
 }

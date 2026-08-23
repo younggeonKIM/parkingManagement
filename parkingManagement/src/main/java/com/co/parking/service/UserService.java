@@ -68,4 +68,12 @@ public class UserService {
 		ur.save(ue);
 		
 	}
+	
+	public void doReserveUser(String uid) {
+		
+		UserEntity ue = new UserEntity();
+		ue= ur.findById(uid).get();
+		ue.setUserParkFlag(false);
+		ur.save(ue);
+	}
 }
