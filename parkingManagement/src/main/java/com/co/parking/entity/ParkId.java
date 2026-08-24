@@ -51,6 +51,12 @@ public class ParkId implements Serializable {
 	public void setParkNum(String parkNum) {
 		this.parkNum = parkNum;
 	}
+
+	public ParkId(int parkFloor, String parkNum) {
+		super();
+		this.parkFloor = parkFloor;
+		this.parkNum = parkNum;
+	}
 	
 	
 }

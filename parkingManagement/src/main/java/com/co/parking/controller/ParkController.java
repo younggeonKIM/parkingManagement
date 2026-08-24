@@ -43,11 +43,12 @@ public class ParkController {
 	@RequestMapping("/park/id/{floor}/{num}")
 	public String getParkById(@PathVariable("floor")int fl, @PathVariable("num")String num, Model m) {
 		
-		ParkDTO pdto;
-		ParkId pi = new ParkId();
-		pi.setParkFloor(fl);
-		pi.setParkNum(num);
-		pdto=ps.getParkById(pi);
+		// 생성자를 사용해 한줄로 축약
+		ParkId pi = new ParkId(fl, num);
+		
+		// 선언 시 바로 값 대입
+		ParkDTO pdto = ps.getParkById(pi);
+		
 		m.addAttribute("park", pdto);
 		return "getParkById";
 	}
