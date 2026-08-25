@@ -74,6 +74,6 @@
 
 </table>
 
-
+<a href="/getAllPark">목록으로 돌아가기</a>
 </body>
 </html>

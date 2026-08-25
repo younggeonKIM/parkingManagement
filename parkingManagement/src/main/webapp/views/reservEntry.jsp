@@ -85,7 +85,7 @@ const parkList=[
 			
 			
 		</select>
-	
+		<input type="submit" value="주차예약">		
 		
 	</form>
 
@@ -94,7 +94,17 @@ const parkList=[
 
 </body>
 <script type="text/javascript">
-
+function check(f){
+	
+	if(f.parkFloor.value === ""){
+		
+		alert("예약하실 주차 층계를 선택해주세요.");
+	}
+	if(f.parkNum.value === ""){
+		
+		alert("예약하실 주차 번호를 선택해주세요.");
+	}
+}
 
 function toggleSelect(){
 	const floorVal = document.getElementById('parkFloor').value;

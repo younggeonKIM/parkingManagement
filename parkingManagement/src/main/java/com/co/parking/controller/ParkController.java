@@ -64,10 +64,11 @@ public class ParkController {
 	}
 	
 	@RequestMapping(value="/reserv/do", method=RequestMethod.POST)
-	public String doReserve(@RequestParam("parkFloor") int pf, @RequestParam("parkNum") String pn, HttpSession ss, Model m) {
+	public String doReserve(@RequestParam("parkFloor") String pf, @RequestParam("parkNum") String pn, HttpSession ss, Model m) {
 		
+		String pfNum = pf.substring(0, 1);
 		// 생성자를 사용해 한 줄로 축약
-		ParkId pi = new ParkId(pf, pn);
+		ParkId pi = new ParkId(Integer.parseInt(pfNum) , pn);
 		
 		ps.doReservePark(pi);
 		us.doReserveUser(ss.getAttribute("userID").toString());
