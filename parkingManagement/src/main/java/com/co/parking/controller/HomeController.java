@@ -2,7 +2,6 @@ package com.co.parking.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +12,15 @@ import com.co.parking.service.ParkService;
 @Controller
 public class HomeController {
 
-	@Autowired
-	ParkService ps;
+	
+	private final ParkService ps;
 	
 	
+	public HomeController(ParkService ps) {
+		
+		this.ps = ps;
+	}
+
 	@RequestMapping("/")
 	public String Home( ) {
 		

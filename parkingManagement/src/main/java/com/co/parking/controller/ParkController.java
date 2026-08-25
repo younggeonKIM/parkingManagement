@@ -1,6 +1,6 @@
 package com.co.parking.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,11 +19,21 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class ParkController {
 
-	@Autowired
-	ParkService ps;
 	
-	@Autowired
-	UserService us;
+	private final ParkService ps;
+	
+	
+	private final UserService us;
+	
+	
+	
+	public ParkController(ParkService ps, UserService us) {
+		
+		this.ps = ps;
+		this.us = us;
+	}
+
+	
 	
 	@RequestMapping("/parkEntry")
 	public String goParkEntry() {
@@ -43,7 +53,7 @@ public class ParkController {
 	@RequestMapping("/park/id/{floor}/{num}")
 	public String getParkById(@PathVariable("floor")int fl, @PathVariable("num")String num, Model m) {
 		
-		// 생성자를 사용해 한줄로 축약
+		// 생성자를 사용해 한 줄로 축약
 		ParkId pi = new ParkId(fl, num);
 		
 		// 선언 시 바로 값 대입
@@ -56,9 +66,9 @@ public class ParkController {
 	@RequestMapping(value="/reserv/do", method=RequestMethod.POST)
 	public String doReserve(@RequestParam("parkFloor") int pf, @RequestParam("parkNum") String pn, HttpSession ss, Model m) {
 		
-		ParkId pi = new ParkId();
-		pi.setParkFloor(pf);
-		pi.setParkNum(pn);
+		// 생성자를 사용해 한 줄로 축약
+		ParkId pi = new ParkId(pf, pn);
+		
 		ps.doReservePark(pi);
 		us.doReserveUser(ss.getAttribute("userID").toString());
 		m.addAttribute("parkFloor", pf);
