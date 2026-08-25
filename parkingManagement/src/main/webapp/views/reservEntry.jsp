@@ -88,7 +88,7 @@ const parkList=[
 		<input type="submit" value="주차예약">		
 		
 	</form>
-
+	<a href="/">홈으로</a>
 </c:otherwise>
 </c:choose>
 

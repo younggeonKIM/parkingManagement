@@ -5,6 +5,7 @@ public class ParkDTO {
 	private int parkFloor;
 	private String parkNum;
 	private boolean parkFlag;
+	private String parkCarNum;
 	public int getParkFloor() {
 		return parkFloor;
 	}
@@ -23,16 +24,19 @@ public class ParkDTO {
 	public void setParkFlag(boolean parkFlag) {
 		this.parkFlag = parkFlag;
 	}
-	public ParkDTO(int parkFloor, String parkNum, boolean parkFlag) {
+	@Override
+	public String toString() {
+		return "ParkDTO [parkFloor=" + parkFloor + ", parkNum=" + parkNum + ", parkFlag=" + parkFlag + ", parkCarNum="
+				+ parkCarNum + "]";
+	}
+	public ParkDTO(int parkFloor, String parkNum, boolean parkFlag, String parkCarNum) {
 		super();
 		this.parkFloor = parkFloor;
 		this.parkNum = parkNum;
 		this.parkFlag = parkFlag;
+		this.parkCarNum = parkCarNum;
 	}
-	@Override
-	public String toString() {
-		return "ParkDTO [parkFloor=" + parkFloor + ", parkNum=" + parkNum + ", parkFlag=" + parkFlag + "]";
-	}
+	
 	
 	
 }

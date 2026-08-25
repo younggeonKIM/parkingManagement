@@ -44,6 +44,7 @@ public class UserController {
 			
 			sess.setAttribute("username", us.getUserName());
 			sess.setAttribute("userID", uid);
+			sess.setAttribute("usercar", us.getUserCarNum());
 			return "userLoginResult";
 		} else {
 			

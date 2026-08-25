@@ -22,6 +22,10 @@ public class ParkEntity {
 	@Column(name = "parkFlag", columnDefinition="TINYINT")
 	private boolean parkFlag;
 
+	
+	@Column(name = "parkCarNum", length=10)
+	private String parkCarNum;
+	
 	public int getParkFloor() {
 		return parkFloor;
 	}
@@ -44,6 +48,14 @@ public class ParkEntity {
 
 	public void setParkFlag(boolean parkFlag) {
 		this.parkFlag = parkFlag;
+	}
+
+	public String getParkCarNum() {
+		return parkCarNum;
+	}
+
+	public void setParkCarNum(String parkCarNum) {
+		this.parkCarNum = parkCarNum;
 	}
 	
 	

@@ -70,11 +70,17 @@ public class ParkController {
 		// 생성자를 사용해 한 줄로 축약
 		ParkId pi = new ParkId(Integer.parseInt(pfNum) , pn);
 		
-		ps.doReservePark(pi);
+		ps.doReservePark(pi, ss);
 		us.doReserveUser(ss.getAttribute("userID").toString());
 		m.addAttribute("parkFloor", pf);
 		m.addAttribute("parkNum", pn);
 		
 		return "reservResult";
+	}
+	
+	@RequestMapping("/getMyParkNum")
+	public String getMyParkNum() {
+		
+		return "";
 	}
 }

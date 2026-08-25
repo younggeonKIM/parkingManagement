@@ -19,6 +19,8 @@ public class UserService {
 	
 	private String userName;
 	
+	private String userCarNum;
+	
 	public boolean isLoginCheckToken() {
 		return loginCheckToken;
 	}
@@ -27,6 +29,13 @@ public class UserService {
 	public String getUserName() {
 		return userName;
 	}
+	
+	
+
+	public String getUserCarNum() {
+		return userCarNum;
+	}
+
 
 	public String userLoginResult(String uid, String upwd) {
 		
@@ -44,6 +53,7 @@ public class UserService {
 				
 				this.loginCheckToken = true;
 				this.userName = s.get().getUserName();
+				this.userCarNum = s.get().getUserCarNum();
 				return "login successful";
 			}
 			else {
@@ -62,7 +72,7 @@ public class UserService {
 		ue.setUserID(udto.getUserID());
 		ue.setUserPWD(udto.getUserPWD());
 		ue.setUserName(udto.getUserName());
-		ue.setUserParkFlag(udto.isUserParkFlag());
+		ue.setUserParkFlag(true);
 		ue.setUserCarNum(udto.getUserCarNum());
 		
 		ur.save(ue);

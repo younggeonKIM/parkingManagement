@@ -11,6 +11,8 @@ import com.co.parking.entity.ParkId;
 import com.co.parking.model.ParkDTO;
 import com.co.parking.repository.ParkRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service
 public class ParkService {
 
@@ -27,7 +29,7 @@ public class ParkService {
 		
 		for(ParkEntity i : li) {
 			
-			ParkDTO j = new ParkDTO(i.getParkFloor(), i.getParkNum(), i.isParkFlag());
+			ParkDTO j = new ParkDTO(i.getParkFloor(), i.getParkNum(), i.isParkFlag(), i.getParkCarNum());
 			list.add(j);
 		}
 		
@@ -41,7 +43,8 @@ public class ParkService {
 		pe.setParkNum(pn);
 		
 		
-		pe.setParkFlag(false);
+		pe.setParkFlag(true);
+		pe.setParkCarNum("주차 차량 없음");
 		prepo.save(pe);
 	}
 	
@@ -50,15 +53,16 @@ public class ParkService {
 		
 		ParkEntity pe = new ParkEntity();
 		pe=prepo.findById(pi).get();
-		ParkDTO pdto = new ParkDTO(pe.getParkFloor(), pe.getParkNum(), pe.isParkFlag());
+		ParkDTO pdto = new ParkDTO(pe.getParkFloor(), pe.getParkNum(), pe.isParkFlag(), pe.getParkCarNum());
 		return pdto;
 	}
 	
-	public void doReservePark(ParkId pi) {
+	public void doReservePark(ParkId pi, HttpSession ss) {
 		
 		ParkEntity pe = new ParkEntity();
 		pe = prepo.findById(pi).get();
 		pe.setParkFlag(false);
+		pe.setParkCarNum(ss.getAttribute("usercar").toString());
 		prepo.save(pe);
 		
 	}
