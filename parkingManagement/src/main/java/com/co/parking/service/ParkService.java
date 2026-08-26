@@ -66,4 +66,25 @@ public class ParkService {
 		prepo.save(pe);
 		
 	}
+	public ParkDTO getMyParkNum(String pcn) {
+		
+		List<ParkDTO> list = getAllParkList();
+		ParkDTO park = new ParkDTO();
+		for(ParkDTO pdto : list) {
+			
+			if(pdto.getParkCarNum()==null || pdto.getParkCarNum()=="") {
+				
+				continue;
+			}
+			if(pdto.getParkCarNum().equals(pcn)) {
+				
+				park.setParkFloor(pdto.getParkFloor());
+				park.setParkNum(pdto.getParkNum());
+				park.setParkFlag(pdto.isParkFlag());
+				park.setParkCarNum(pdto.getParkCarNum());
+			}
+		}
+		
+		return park;
+	}
 }

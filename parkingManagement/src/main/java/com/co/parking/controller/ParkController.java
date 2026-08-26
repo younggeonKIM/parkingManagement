@@ -79,8 +79,11 @@ public class ParkController {
 	}
 	
 	@RequestMapping("/getMyParkNum")
-	public String getMyParkNum() {
+	public String getMyParkNum(HttpSession ss, Model m) {
 		
-		return "";
+		ParkDTO pdto = ps.getMyParkNum(ss.getAttribute("usercarnum").toString());
+		m.addAttribute("parkFloor", pdto.getParkFloor());
+		m.addAttribute("parkNum", pdto.getParkNum());
+		return "getMyParkNum";
 	}
 }

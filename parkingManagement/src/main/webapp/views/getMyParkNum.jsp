@@ -67,8 +67,8 @@
 <br/>
 <br/>
 <br/>
-고객님이 주차하신 곳은 
+고객님이 주차하신 곳은 ${ parkFloor } 층에 있는 ${ parkNum } 번 주차장입니다.
 
-<a href="/getAllPark">목록으로 돌아가기</a>
+<a href="/">홈으로</a>
 </body>
 </html>

@@ -24,6 +24,14 @@ public class ParkDTO {
 	public void setParkFlag(boolean parkFlag) {
 		this.parkFlag = parkFlag;
 	}
+	
+	
+	public String getParkCarNum() {
+		return parkCarNum;
+	}
+	public void setParkCarNum(String parkCarNum) {
+		this.parkCarNum = parkCarNum;
+	}
 	@Override
 	public String toString() {
 		return "ParkDTO [parkFloor=" + parkFloor + ", parkNum=" + parkNum + ", parkFlag=" + parkFlag + ", parkCarNum="
@@ -35,6 +43,10 @@ public class ParkDTO {
 		this.parkNum = parkNum;
 		this.parkFlag = parkFlag;
 		this.parkCarNum = parkCarNum;
+	}
+	public ParkDTO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	
