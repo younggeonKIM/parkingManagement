@@ -1,0 +1,6 @@
+noInputID=ID를 반드시 입력해 주세요.
+noInputPWD=비밀번호를 반드시 입력해 주세요.
+dupliID=ID가 중복됐습니다.
+existsCarNum=입력하신 차량 번호가 이미 가입돼 존재하는 차량번호입니다.
+
+

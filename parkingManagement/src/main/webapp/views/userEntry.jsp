@@ -10,11 +10,11 @@
 </head>
 <body>
 
-<form:form action="/userEntry/do" method="POST" onSubmit="return checkForm(this)" modelAttribute="UserDTO">
-	ID : <input type="text" name="userID"><form:errors path="userID" style="color-red;"/>
-	PWD : <input type="password" name="userPWD"><form:errors path="userPWD" style="color-red;"/>
-	이름 : <input type="text" name="userName">
-	차량 번호: <input type="text" name="userCarNum"><form:errors path="userCarNum" style="color-red;"/>
+<form:form action="/userEntry/do" method="POST" onSubmit="return checkForm(this)" modelAttribute="userDTO">
+	ID : <input type="text" name="userID">&nbsp;&nbsp;<form:errors path="userID" style="color:red;"/><br/>
+	PWD : <input type="password" name="userPWD">&nbsp;&nbsp;<form:errors path="userPWD" style="color:red;"/><br/>
+	이름 : <input type="text" name="userName"><br/>
+	차량 번호: <input type="text" name="userCarNum">&nbsp;&nbsp;<form:errors path="userCarNum" style="color:red;"/><br/>
 	<input type="checkbox" name="userParkFlag" hidden="hidden" checked="checked" value="0">
 	등록하기 <input type="submit" value="회원가입">
 

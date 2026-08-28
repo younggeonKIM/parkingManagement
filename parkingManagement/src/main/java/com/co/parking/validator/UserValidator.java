@@ -1,4 +1,4 @@
-package validator;
+package com.co.parking.validator;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -36,22 +36,22 @@ public class UserValidator implements Validator {
 		UserDTO udto = (UserDTO)target;
 		if(! StringUtils.hasLength(udto.getUserID())) {
 			
-			errors.rejectValue("userID", "ID를 반드시 입력해 주세요.");
+			errors.rejectValue("userID", "noInputID");
 		}
 		
 		if(! StringUtils.hasLength(udto.getUserPWD())) {
 			
-			errors.rejectValue("userPWD", "비밀번호를 반드시 입력해 주세요.");
+			errors.rejectValue("userPWD", "noInputPWD");
 		}
 		
 		if(ur.existsById(udto.getUserID())) {
 			
-			errors.rejectValue("userId", "ID가 중복됐습니다.");
+			errors.rejectValue("userID", "dupliID");
 		}
 		
 		if(cr.existsById(udto.getUserCarNum())) {
 			
-			errors.rejectValue("userCarNum", "입력하신 차량 번호가 이미 가입돼 존재하는 차량번호입니다.");
+			errors.rejectValue("userCarNum", "existsCarNum");
 		}
 	}
 

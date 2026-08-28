@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.co.parking.model.UserDTO;
 import com.co.parking.service.UserService;
+import com.co.parking.validator.UserValidator;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -24,7 +25,7 @@ public class UserController {
 	
 	private final Validator uv;
 	
-	public UserController(UserService us, Validator uv) {
+	public UserController(UserService us, UserValidator uv) {
 		
 		this.us = us;
 		this.uv = uv;
