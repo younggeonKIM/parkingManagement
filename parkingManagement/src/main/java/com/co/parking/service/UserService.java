@@ -5,8 +5,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.co.parking.entity.CarEntity;
 import com.co.parking.entity.UserEntity;
 import com.co.parking.model.UserDTO;
+import com.co.parking.repository.CarRepository;
 import com.co.parking.repository.UserRepository;
 
 @Service
@@ -14,6 +16,9 @@ public class UserService {
 
 	@Autowired
 	UserRepository ur;
+	
+	@Autowired
+	CarRepository cr;
 	
 	private boolean loginCheckToken;
 	
@@ -69,13 +74,20 @@ public class UserService {
 	public void createUser(UserDTO udto) {
 		
 		UserEntity ue = new UserEntity();
-		ue.setUserID(udto.getUserID());
-		ue.setUserPWD(udto.getUserPWD());
-		ue.setUserName(udto.getUserName());
-		ue.setUserParkFlag(true);
-		ue.setUserCarNum(udto.getUserCarNum());
+		CarEntity ce = new CarEntity();
+		if(! ur.existsById(udto.getUserID()) && !cr.existsById(udto.getUserCarNum()) ) {
+			
+			// userID와 car table의 carNum 이 중복되지 않는다면, 주차 중이 아닌 신규 유저의 등록을 실행.
+			ue = new UserEntity(udto.getUserID(), udto.getUserPWD(), udto.getUserName(), udto.getUserCarNum(), true );
+			ur.save(ue);
+		}
 		
-		ur.save(ue);
+		if(! cr.existsById(udto.getUserCarNum())) {
+		
+			ce = new CarEntity(udto.getUserCarNum(), null, null, udto.getUserID());
+			cr.save(ce);
+		}
+		
 		
 	}
 	
@@ -83,6 +95,8 @@ public class UserService {
 		
 		UserEntity ue = new UserEntity();
 		ue= ur.findById(uid).get();
+		
+		// 예약을 하면 유저 주차 여부가 주차 중 (false) 으로 바뀜.
 		ue.setUserParkFlag(false);
 		ur.save(ue);
 	}

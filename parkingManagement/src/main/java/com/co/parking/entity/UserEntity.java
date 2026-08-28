@@ -64,6 +64,22 @@ public class UserEntity {
 	public void setUserParkFlag(boolean userParkFlag) {
 		this.userParkFlag = userParkFlag;
 	}
+
+	
+	
+	public UserEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserEntity(String userID, String userPWD, String userName, String userCarNum, boolean userParkFlag) {
+		super();
+		this.userID = userID;
+		this.userPWD = userPWD;
+		this.userName = userName;
+		this.userCarNum = userCarNum;
+		this.userParkFlag = userParkFlag;
+	}
 	
 	
 	
