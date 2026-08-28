@@ -40,6 +40,13 @@ public class UserDTO {
 		this.userParkFlag = userParkFlag;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "UserDTO [userID=" + userID + ", userPWD=" + userPWD + ", userName=" + userName + ", userCarNum="
+				+ userCarNum + ", userParkFlag=" + userParkFlag + "]";
+	}
 	public UserDTO(String userID, String userPWD, String userName, boolean userParkFlag) {
 		super();
 		this.userID = userID;

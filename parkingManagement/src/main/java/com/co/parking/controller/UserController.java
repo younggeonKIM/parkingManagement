@@ -4,6 +4,7 @@ package com.co.parking.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,6 @@ import com.co.parking.model.UserDTO;
 import com.co.parking.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
-import validator.UserValidator;
 
 @Controller
 public class UserController {
@@ -22,9 +22,9 @@ public class UserController {
 	
 	private final UserService us;
 	
-	private final UserValidator uv;
+	private final Validator uv;
 	
-	public UserController(UserService us, UserValidator uv) {
+	public UserController(UserService us, Validator uv) {
 		
 		this.us = us;
 		this.uv = uv;
@@ -75,13 +75,20 @@ public class UserController {
 	@RequestMapping(path="/userEntry/do", method=RequestMethod.POST)
 	public String createUser(@Validated @ModelAttribute UserDTO udto, BindingResult br, Model m) {
 		
-		uv.validate(udto, br);
-		
 		System.out.println(udto);
 		System.out.println(udto.isUserParkFlag());
-		us.createUser(udto);
-		m.addAttribute("user", udto);
-		return "userEntryResult";
+		
+		uv.validate(udto, br);
+		if(br.hasErrors()) {
+			
+			return "userEntry";
+		} else {
+			us.createUser(udto);
+			m.addAttribute("user", udto);
+			return "userEntryResult";
+		}
+		
+		
 	}
 	
 	

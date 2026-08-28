@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +10,17 @@
 </head>
 <body>
 
+<form:form action="/userEntry/do" method="POST" onSubmit="return checkForm(this)" modelAttribute="UserDTO">
+	ID : <input type="text" name="userID"><form:errors path="userID" style="color-red;"/>
+	PWD : <input type="password" name="userPWD"><form:errors path="userPWD" style="color-red;"/>
+	이름 : <input type="text" name="userName">
+	차량 번호: <input type="text" name="userCarNum"><form:errors path="userCarNum" style="color-red;"/>
+	<input type="checkbox" name="userParkFlag" hidden="hidden" checked="checked" value="0">
+	등록하기 <input type="submit" value="회원가입">
 
+</form:form>
 
-
+<%-- 
 <form action="/userEntry/do" method="POST" onSubmit="return checkForm(this)">
 	ID : <input type="text" name="userID">
 	PWD : <input type="password" name="userPWD">
@@ -22,7 +30,7 @@
 	등록하기 <input type="submit" value="회원가입">
 	
 </form>
-
+ --%>
 
 </body>
 <script type="text/javascript">
