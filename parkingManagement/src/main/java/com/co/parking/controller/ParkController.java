@@ -103,4 +103,23 @@ public class ParkController {
 			return "getMyParkNum";
 		}
 	}
+	
+	@RequestMapping("/calcParkFee")
+	public String getParkFee(HttpSession ss, Model m) {
+		
+		if(ss.getAttribute("usercarnum") == null) {
+			
+			return "getParkFee";
+		} else {
+			
+			
+			
+			
+			int fee = cs.getParkFee(ss.getAttribute("usercarnum").toString(), ss.getAttribute("userID").toString());
+			m.addAttribute("fee", fee);
+			return "getParkFee";
+		}
+		
+		
+	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.co.parking.model.UserDTO;
+import com.co.parking.service.CarService;
 import com.co.parking.service.UserService;
 import com.co.parking.validator.UserValidator;
 
@@ -21,12 +22,15 @@ import jakarta.servlet.http.HttpSession;
 public class UserController {
 
 	
+	private final CarService cs;
+	
 	private final UserService us;
 	
 	private final Validator uv;
 	
-	public UserController(UserService us, UserValidator uv) {
+	public UserController(CarService cs, UserService us, UserValidator uv) {
 		
+		this.cs = cs;
 		this.us = us;
 		this.uv = uv;
 	}
@@ -84,6 +88,8 @@ public class UserController {
 			
 			return "userEntry";
 		} else {
+			
+			cs.createCar(udto);
 			us.createUser(udto);
 			m.addAttribute("user", udto);
 			return "userEntryResult";

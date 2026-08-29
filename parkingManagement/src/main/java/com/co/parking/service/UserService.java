@@ -74,19 +74,15 @@ public class UserService {
 	public void createUser(UserDTO udto) {
 		
 		UserEntity ue = new UserEntity();
-		CarEntity ce = new CarEntity();
+		
 		if(! ur.existsById(udto.getUserID()) && !cr.existsById(udto.getUserCarNum()) ) {
 			
-			// userID와 car table의 carNum 이 중복되지 않는다면, 주차 중이 아닌 신규 유저의 등록을 실행.
+			// userID와 car table의 carNum 이 중복되지 않는다면, 주차 중이 아닌 (parkFlag=1) 신규 유저의 등록을 실행.
 			ue = new UserEntity(udto.getUserID(), udto.getUserPWD(), udto.getUserName(), udto.getUserCarNum(), true );
 			ur.save(ue);
 		}
 		
-		if(! cr.existsById(udto.getUserCarNum())) {
 		
-			ce = new CarEntity(udto.getUserCarNum(), null, null, udto.getUserID());
-			cr.save(ce);
-		}
 		
 		
 	}
@@ -96,7 +92,7 @@ public class UserService {
 		UserEntity ue = new UserEntity();
 		ue= ur.findById(uid).get();
 		
-		// 예약을 하면 유저 주차 여부가 주차 중 (false) 으로 바뀜.
+		// 예약을 하면 유저 주차 여부가 주차 중 (false, parkFlag=0) 으로 바뀜.
 		ue.setUserParkFlag(false);
 		ur.save(ue);
 	}
