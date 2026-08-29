@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.co.parking.entity.ParkId;
 import com.co.parking.model.ParkDTO;
+import com.co.parking.service.CarService;
 import com.co.parking.service.ParkService;
 import com.co.parking.service.UserService;
 
@@ -25,16 +26,19 @@ public class ParkController {
 	
 	private final UserService us;
 	
+	private final CarService cs;
 	
 	
-	public ParkController(ParkService ps, UserService us) {
-		
+	
+	public ParkController(ParkService ps, UserService us, CarService cs) {
+		super();
 		this.ps = ps;
 		this.us = us;
+		this.cs = cs;
 	}
 
-	
-	
+
+
 	@RequestMapping("/parkEntry")
 	public String goParkEntry() {
 		
@@ -66,24 +70,37 @@ public class ParkController {
 	@RequestMapping(value="/reserv/do", method=RequestMethod.POST)
 	public String doReserve(@RequestParam("parkFloor") String pf, @RequestParam("parkNum") String pn, HttpSession ss, Model m) {
 		
+		
+			
 		String pfNum = pf.substring(0, 1);
 		// 생성자를 사용해 한 줄로 축약
 		ParkId pi = new ParkId(Integer.parseInt(pfNum) , pn);
 		
 		ps.doReservePark(pi, ss);
+		
 		us.doReserveUser(ss.getAttribute("userID").toString());
+		
+		cs.reservCar(ss.getAttribute("usercarnum").toString());
 		m.addAttribute("parkFloor", pf);
 		m.addAttribute("parkNum", pn);
 		
 		return "reservResult";
+		
+		
 	}
 	
 	@RequestMapping("/getMyParkNum")
 	public String getMyParkNum(HttpSession ss, Model m) {
-		
-		ParkDTO pdto = ps.getMyParkNum(ss.getAttribute("usercarnum").toString());
-		m.addAttribute("parkFloor", pdto.getParkFloor());
-		m.addAttribute("parkNum", pdto.getParkNum());
-		return "getMyParkNum";
+		if(ss.getAttribute("usercarnum") == null) {
+			
+			return "getMyParkNum";
+		} else {
+			
+
+			ParkDTO pdto = ps.getMyParkNum(ss.getAttribute("usercarnum").toString());
+			m.addAttribute("parkFloor", pdto.getParkFloor());
+			m.addAttribute("parkNum", pdto.getParkNum());
+			return "getMyParkNum";
+		}
 	}
 }

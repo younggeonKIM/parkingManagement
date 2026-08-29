@@ -62,7 +62,7 @@ public class ParkService {
 		ParkEntity pe = new ParkEntity();
 		pe = prepo.findById(pi).get();
 		pe.setParkFlag(false);
-		pe.setParkCarNum(ss.getAttribute("usercar").toString());
+		pe.setParkCarNum(ss.getAttribute("usercarnum").toString());
 		prepo.save(pe);
 		
 	}

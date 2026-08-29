@@ -1,6 +1,7 @@
 package com.co.parking.entity;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,10 +17,10 @@ public class CarEntity {
 	private String carNum;
 	
 	@Column(name="carInTime")
-	private Timestamp carInTime;
+	private LocalDateTime carInTime;
 	
 	@Column(name="carOutTime")
-	private Timestamp carOutTime;
+	private LocalDateTime carOutTime;
 	
 	@Column(name="carUserId", length=15)
 	private String carUserId;
@@ -32,19 +33,21 @@ public class CarEntity {
 		this.carNum = carNum;
 	}
 
-	public Timestamp getCarInTime() {
+	
+
+	public LocalDateTime getCarInTime() {
 		return carInTime;
 	}
 
-	public void setCarInTime(Timestamp carInTime) {
+	public void setCarInTime(LocalDateTime carInTime) {
 		this.carInTime = carInTime;
 	}
 
-	public Timestamp getCarOutTime() {
+	public LocalDateTime getCarOutTime() {
 		return carOutTime;
 	}
 
-	public void setCarOutTime(Timestamp carOutTime) {
+	public void setCarOutTime(LocalDateTime carOutTime) {
 		this.carOutTime = carOutTime;
 	}
 
@@ -63,7 +66,7 @@ public class CarEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CarEntity(String carNum, Timestamp carInTime, Timestamp carOutTime, String carUserId) {
+	public CarEntity(String carNum, LocalDateTime carInTime, LocalDateTime carOutTime, String carUserId) {
 		super();
 		this.carNum = carNum;
 		this.carInTime = carInTime;
