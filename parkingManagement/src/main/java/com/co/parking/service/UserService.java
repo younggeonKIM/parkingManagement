@@ -96,4 +96,16 @@ public class UserService {
 		ue.setUserParkFlag(false);
 		ur.save(ue);
 	}
+	
+	public void doCheckout(String uid) {
+		
+		if(ur.existsById(uid)) {
+			
+			UserEntity ue = ur.findById(uid).get();
+			// 현재 로그인 중인 id가 해당 entity의 id와 일치하면 주차 중 여부를 주차 중 아님 (parkflag=1) 
+			// 으로 변경.
+			ue.setUserParkFlag(true);
+			ur.save(ue);
+		}
+	}
 }

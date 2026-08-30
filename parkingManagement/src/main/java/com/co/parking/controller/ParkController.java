@@ -1,6 +1,8 @@
 package com.co.parking.controller;
 
 
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -96,7 +98,6 @@ public class ParkController {
 			return "getMyParkNum";
 		} else {
 			
-
 			ParkDTO pdto = ps.getMyParkNum(ss.getAttribute("usercarnum").toString());
 			m.addAttribute("parkFloor", pdto.getParkFloor());
 			m.addAttribute("parkNum", pdto.getParkNum());
@@ -112,14 +113,24 @@ public class ParkController {
 			return "getParkFee";
 		} else {
 			
-			
-			
-			
-			int fee = cs.getParkFee(ss.getAttribute("usercarnum").toString(), ss.getAttribute("userID").toString());
+			String userCarNum = ss.getAttribute("usercarnum").toString();
+			int fee = cs.getParkFee(userCarNum, ss.getAttribute("userID").toString());
+			LocalDateTime ldt = LocalDateTime.now();
 			m.addAttribute("fee", fee);
+			m.addAttribute("carInTime", cs.getCarInTime(userCarNum));
+			m.addAttribute("nowTime", ldt);
 			return "getParkFee";
 		}
 		
+	}
+	
+	@RequestMapping("/doCheckout")
+	public String parkCheckOut(HttpSession ss) {
 		
+		String carnum = ss.getAttribute("usercarnum").toString();
+		ps.doCheckout(carnum);
+		cs.doCheckout(carnum);
+		us.doCheckout(ss.getAttribute("userID").toString());
+		return "redirect:/getParkFee";
 	}
 }
