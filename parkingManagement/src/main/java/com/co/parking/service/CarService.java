@@ -52,8 +52,9 @@ public class CarService {
 		
 		// userEntity의 주차 중 여부코드가 0 (주차 중) 일 때만 로직 실행.
 		if(ur.findById(userId).get().isUserParkFlag() == false) {
-			int feeRate = 8000;
-			
+			int earlyFee = 2000;
+			int feeRate = 4000;
+			int fee = 0;
 			ZoneId zi = ZoneId.of("Asia/Seoul");
 			LocalDateTime curTime = LocalDateTime.now(zi);
 			
@@ -63,8 +64,23 @@ public class CarService {
 				ce = cr.findById(carNum).get();
 				
 			}
-			int diffHour= curTime.getHour() - ce.getCarInTime().getHour();
-			int fee = feeRate * diffHour;
+			
+			int curTimeHour = curTime.getHour();
+			int carInTimeHour = ce.getCarInTime().getHour();
+			int curTimeMin = curTime.getMinute();
+			int carInTimeMin = ce.getCarInTime().getMinute();
+			int diffHour = (curTimeHour*60 + curTimeMin) - (carInTimeHour*60 + carInTimeMin); 
+			
+			if(diffHour < 30) {
+				
+				// 30분 전에 주차장에서 출차한 경우 조출 서비스 할인 적용
+				fee = earlyFee;
+			} else {
+				
+				// 30분 이후부터는 30분 단위 주차요금 계산
+				fee= (diffHour/30) * feeRate;
+			}
+			
 			return fee;
 			
 		}
