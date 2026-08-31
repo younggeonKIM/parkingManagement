@@ -49,10 +49,17 @@
 <br/>
 <br/>
 <br/>
-고객님이 주차하신 곳은 ${ parkFloor } 층에 있는 ${ parkNum } 번 주차장입니다.
-
-<a href="/">홈으로</a>
-
+	<c:choose>
+	<c:when test="${ sessionScope.userparkflag eq true }">
+		주차하신 손님만 주차장 위치를 알려줄 수 있어요.
+		<br/><a href="/">홈으로</a>
+	</c:when>
+	<c:otherwise>
+		고객님이 주차하신 곳은 ${ parkFloor }층에 있는 ${ parkNum }번 주차장입니다. <br/>
+		
+		<a href="/">홈으로</a>
+	</c:otherwise>
+	</c:choose>
 </c:otherwise>
 </c:choose>
 

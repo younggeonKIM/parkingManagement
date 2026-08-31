@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.co.parking.entity.ParkId;
 import com.co.parking.model.ParkDTO;
+import com.co.parking.model.UserDTO;
 import com.co.parking.service.CarService;
 import com.co.parking.service.ParkService;
 import com.co.parking.service.UserService;
@@ -49,6 +50,7 @@ public class ParkController {
 	
 	@RequestMapping("/parkEntry/do")
 	public String createPark(@RequestParam("parkFloor") int pf, @RequestParam("parkNum") String pn, Model m) {
+		
 		
 		ps.createPark(pf, pn);
 		m.addAttribute("parkFloor", pf);
@@ -99,9 +101,19 @@ public class ParkController {
 		} else {
 			
 			ParkDTO pdto = ps.getMyParkNum(ss.getAttribute("usercarnum").toString());
-			m.addAttribute("parkFloor", pdto.getParkFloor());
-			m.addAttribute("parkNum", pdto.getParkNum());
-			return "getMyParkNum";
+			// 현재 로그인 중인 user가 주차 중일 때만 service 로직을 실행.
+			if(ss.getAttribute("userparkflag")!=null) {
+				
+				m.addAttribute("parkFloor", pdto.getParkFloor());
+				m.addAttribute("parkNum", pdto.getParkNum());
+				return "getMyParkNum";
+			} else {
+				
+				return "getMyParkNum";
+			}
+			
+			
+			
 		}
 	}
 	

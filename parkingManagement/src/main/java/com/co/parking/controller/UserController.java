@@ -46,14 +46,15 @@ public class UserController {
 	public String doUserLogin(@RequestParam(name="userID") String uid, @RequestParam(name="userPWD") String upwd, HttpSession sess) {
 		
 		
-		String message = us.userLoginResult(uid, upwd);
-		System.out.println(message);
+		UserDTO udto = us.userLoginResult(uid, upwd);
+		
 		System.out.println("loginCheckToken 상태는 : "+us.isLoginCheckToken());
 		if(us.isLoginCheckToken()) {
 			
-			sess.setAttribute("username", us.getUserName());
-			sess.setAttribute("userID", uid);
-			sess.setAttribute("usercarnum", us.getUserCarNum());
+			sess.setAttribute("username", udto.getUserName());
+			sess.setAttribute("userID", udto.getUserID());
+			sess.setAttribute("usercarnum", udto.getUserCarNum());
+			sess.setAttribute("userparkflag", udto.isUserParkFlag());
 			return "userLoginResult";
 		} else {
 			

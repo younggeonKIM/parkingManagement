@@ -42,29 +42,30 @@ public class UserService {
 	}
 
 
-	public String userLoginResult(String uid, String upwd) {
+	public UserDTO userLoginResult(String uid, String upwd) {
 		
 		Optional<UserEntity> s =ur.findById(uid);
 		
-		if(! s.isPresent()) {
+		
+		if(s.isEmpty()) {
 			
 
 			this.loginCheckToken = false;
-			return "ID not found";
+			return null;
 		} 
 		else {
 			
 			if(upwd.equals(s.get().getUserPWD()) ) {
 				
 				this.loginCheckToken = true;
-				this.userName = s.get().getUserName();
-				this.userCarNum = s.get().getUserCarNum();
-				return "login successful";
+				UserDTO udto = new UserDTO(s.get().getUserID(), s.get().getUserPWD(), s.get().getUserName(), s.get().isUserParkFlag());
+				
+				return udto;
 			}
 			else {
 				
 				this.loginCheckToken = false;
-				return "check your PWD is correct";
+				return null;
 			}
 		}
 		
@@ -81,10 +82,6 @@ public class UserService {
 			ue = new UserEntity(udto.getUserID(), udto.getUserPWD(), udto.getUserName(), udto.getUserCarNum(), true );
 			ur.save(ue);
 		}
-		
-		
-		
-		
 	}
 	
 	public void doReserveUser(String uid) {
