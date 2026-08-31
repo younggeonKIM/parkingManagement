@@ -85,6 +85,7 @@ public class ParkController {
 		us.doReserveUser(ss.getAttribute("userID").toString());
 		
 		cs.reservCar(ss.getAttribute("usercarnum").toString());
+		
 		m.addAttribute("parkFloor", pf);
 		m.addAttribute("parkNum", pn);
 		
@@ -102,7 +103,7 @@ public class ParkController {
 			
 			ParkDTO pdto = ps.getMyParkNum(ss.getAttribute("usercarnum").toString());
 			// 현재 로그인 중인 user가 주차 중일 때만 service 로직을 실행.
-			if(ss.getAttribute("userparkflag")!=null) {
+			if((boolean)ss.getAttribute("userparkflag")==false) {
 				
 				m.addAttribute("parkFloor", pdto.getParkFloor());
 				m.addAttribute("parkNum", pdto.getParkNum());
@@ -120,7 +121,7 @@ public class ParkController {
 	@RequestMapping("/calcParkFee")
 	public String getParkFee(HttpSession ss, Model m) {
 		
-		if(ss.getAttribute("usercarnum") == null) {
+		if(ss.getAttribute("usercarnum")==null) {
 			
 			return "getParkFee";
 		} else {
@@ -143,6 +144,6 @@ public class ParkController {
 		ps.doCheckout(carnum);
 		cs.doCheckout(carnum);
 		us.doCheckout(ss.getAttribute("userID").toString());
-		return "redirect:/getParkFee";
+		return "redirect:/calcParkFee";
 	}
 }

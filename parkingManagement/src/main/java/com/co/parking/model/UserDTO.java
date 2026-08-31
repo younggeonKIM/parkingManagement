@@ -47,13 +47,15 @@ public class UserDTO {
 		return "UserDTO [userID=" + userID + ", userPWD=" + userPWD + ", userName=" + userName + ", userCarNum="
 				+ userCarNum + ", userParkFlag=" + userParkFlag + "]";
 	}
-	public UserDTO(String userID, String userPWD, String userName, boolean userParkFlag) {
+	public UserDTO(String userID, String userPWD, String userName, String userCarNum, boolean userParkFlag) {
 		super();
 		this.userID = userID;
 		this.userPWD = userPWD;
 		this.userName = userName;
+		this.userCarNum = userCarNum;
 		this.userParkFlag = userParkFlag;
 	}
+	
 	
 	
 }

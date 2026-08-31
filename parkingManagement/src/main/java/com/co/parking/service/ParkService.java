@@ -91,16 +91,20 @@ public class ParkService {
 		List<ParkEntity> li = prepo.findAll();
 		for(ParkEntity pe : li) {
 			
-			if(pe.getParkCarNum().equals(carnum)) {
+			if(pe.getParkCarNum()!=null) {
+				if(pe.getParkCarNum().equals(carnum)) {
+					
+					// 주차장 테이블 전 리스트 요소를 순회하며 만약 현재 로그인 유저의 차량 번호와 해당 차량 번호가 일치하면
+					// 주차 가능 여부를 주차가능 (parkflag=1) 로, 주차 중 차량 번호는 null 로 변경
+					pe.setParkFlag(true);
+					pe.setParkCarNum(null);
+					
+					prepo.save(pe);
+					break;
+				}
 				
-				// 주차장 테이블 전 리스트 요소를 순회하며 만약 현재 로그인 유저의 차량 번호와 해당 차량 번호가 일치하면
-				// 주차 가능 여부를 주차가능 (parkflag=1) 로, 주차 중 차량 번호는 null 로 변경
-				pe.setParkFlag(true);
-				pe.setParkCarNum(null);
-				
-				prepo.save(pe);
-				break;
 			}
+			
 		}
 	}
 }

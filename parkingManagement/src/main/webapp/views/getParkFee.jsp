@@ -35,10 +35,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<p>어서오세요. ${ sessionScope.username } 님 </p> &nbsp;&nbsp; <a href="/userLogout/do">로그아웃하기</a>
+어서오세요. ${ sessionScope.username } 님 &nbsp;&nbsp; <a href="/userLogout/do">로그아웃하기</a>
 
 	<c:choose>
-		<c:when test="${ sessionScope.userparkflag eq null }">
+		<c:when test="${ sessionScope.userparkflag eq true }">
 			주차하신 손님만 주차요금 정산을 해드릴 수 있어요.
 			<br/><a href="/">홈으로</a>
 		</c:when>

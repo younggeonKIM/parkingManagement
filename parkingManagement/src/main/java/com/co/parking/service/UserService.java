@@ -47,7 +47,7 @@ public class UserService {
 		Optional<UserEntity> s =ur.findById(uid);
 		
 		
-		if(s.isEmpty()) {
+		if(!s.isPresent()) {
 			
 
 			this.loginCheckToken = false;
@@ -58,7 +58,7 @@ public class UserService {
 			if(upwd.equals(s.get().getUserPWD()) ) {
 				
 				this.loginCheckToken = true;
-				UserDTO udto = new UserDTO(s.get().getUserID(), s.get().getUserPWD(), s.get().getUserName(), s.get().isUserParkFlag());
+				UserDTO udto = new UserDTO(s.get().getUserID(), s.get().getUserPWD(), s.get().getUserName(),s.get().getUserCarNum(), s.get().isUserParkFlag());
 				
 				return udto;
 			}
