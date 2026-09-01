@@ -39,6 +39,7 @@
 
 	<c:choose>
 		<c:when test="${ sessionScope.userparkflag eq true }">
+			<br/>
 			주차하신 손님만 주차요금 정산을 해드릴 수 있어요.
 			<br/><a href="/">홈으로</a>
 		</c:when>

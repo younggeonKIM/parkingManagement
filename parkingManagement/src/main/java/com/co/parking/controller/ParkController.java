@@ -84,7 +84,12 @@ public class ParkController {
 		
 		us.doReserveUser(ss.getAttribute("userID").toString());
 		
+		// 예약이 완료되면 세션의 유저 주차중 여부를 주차중 (userParkFlag=false, 0) 으로 변경
+		ss.setAttribute("userparkflag", false);
+		
 		cs.reservCar(ss.getAttribute("usercarnum").toString());
+		
+		
 		
 		m.addAttribute("parkFloor", pf);
 		m.addAttribute("parkNum", pn);
@@ -144,6 +149,9 @@ public class ParkController {
 		ps.doCheckout(carnum);
 		cs.doCheckout(carnum);
 		us.doCheckout(ss.getAttribute("userID").toString());
+		
+		// 주차요금 정산이 완료되면 세션의 유저 주차중 여부를 주차중 아님 (userparkflag=true, 1) 으로 변경
+		ss.setAttribute("userparkflag", true);
 		return "redirect:/calcParkFee";
 	}
 }

@@ -89,7 +89,7 @@ public class UserService {
 		UserEntity ue = new UserEntity();
 		ue= ur.findById(uid).get();
 		
-		// 예약을 하면 유저 주차 여부가 주차 중 (false, parkFlag=0) 으로 바뀜.
+		// 예약을 하면 유저 주차중 여부가 주차 중 (false, parkFlag=0) 으로 바뀜.
 		ue.setUserParkFlag(false);
 		ur.save(ue);
 	}
